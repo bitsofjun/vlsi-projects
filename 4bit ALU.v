@@ -6,11 +6,14 @@ module alu_4bit(
 
 always @(*) begin
     case(ALU_Sel)
-        3'b000: ALU_Out = A + B;     // ADD
-        3'b001: ALU_Out = A - B;     // SUB
-        3'b010: ALU_Out = A & B;     // AND
-        3'b011: ALU_Out = A | B;     // OR
-        3'b100: ALU_Out = A ^ B;     // XOR
+        3'b000: ALU_Out = A + B;       // ADD
+        3'b001: ALU_Out = A - B;       // SUB
+        3'b010: ALU_Out = A & B;       // AND
+        3'b011: ALU_Out = A | B;       // OR
+        3'b100: ALU_Out = A ^ B;       // XOR
+        3'b101: ALU_Out = ~(A & B);    // NAND
+        3'b110: ALU_Out = ~(A | B);    // NOR
+        3'b111: ALU_Out = ~(A ^ B);    // XNOR
         default: ALU_Out = 4'b0000;
     endcase
 end
